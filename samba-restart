@@ -1,0 +1,4 @@
+echo "Restarting Samba..."
+sudo service smbd restart
+clear
+echo "Restart done!"
