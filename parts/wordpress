@@ -25,7 +25,7 @@ else
     source $dir/createDB $name
     wp core download
     wp config create --dbname=$name --dbuser=root  --dbpass=root --dbhost=localhost
-    wp core install --skip-themes --skip-plugins --url=local.$name.serverbox.dev --title=$name --admin_user=root --admin_password=root --admin_email=info@example.com
+    wp core install --skip-themes --skip-plugins --url=$name.serverbox.local --title=$name --admin_user=root --admin_password=root --admin_email=info@example.com
     source $dir/apache-restart
     echo "Installation complete"
     sudo chmod 775 -R $path/$name
@@ -49,7 +49,7 @@ else
     wp plugin activate advanced-custom-fields-pro
     wp cache flush
     echo "Latest wordpress with blank theme installed and ACF pro"
-    echo "Dont forget to add *IP* http://local."$name".serverbox.foobar in your host file! (Your host computer not serverbox)"
+    echo "Dont forget to add *IP* http://"$name".serverbox.local in your host file! (Your host computer not serverbox)"
 fi
 
 exit 1;

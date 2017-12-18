@@ -22,5 +22,5 @@ else
     source $dir/apache-restart
     echo "Installation complete"
     echo "$path/$name/$public is now created!"
-    echo "Don't forget to add *IP* http://local."$name".serverbox.foobar in your host file! (Your host computer not serverbox)"
+    echo "Don't forget to add *IP* http://"$name".serverbox.local in your host file! (Your host computer not serverbox)"
 fi

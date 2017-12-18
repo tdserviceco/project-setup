@@ -39,7 +39,7 @@ else
     sudo chmod 775 $path/$name
     echo "Installation complete"
     echo "$path/$name/$public is now created!" 
-    echo "Dont forget to add *IP* http://local."$name".serverbox.foobar in your host file! (Your host computer not serverbox)"
+    echo "Dont forget to add *IP* http://"$name".serverbox.local in your host file! (Your host computer not serverbox)"
 fi
 
 exit 1; 

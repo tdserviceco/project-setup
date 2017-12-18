@@ -2,7 +2,7 @@ echo "Creating Vhost"
     sudo touch $site_available/$2".conf"
     sudo chmod 777 $site_available/$2".conf"
     sudo echo "<VirtualHost *:80>
-    ServerName local.$2.serverbox.foobar
+    ServerName $2.serverbox.local
     DocumentRoot $1/$2/$public
     <Directory "$1/$2/$public">
         Options Indexes FollowSymLinks MultiViews
