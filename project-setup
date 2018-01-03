@@ -1,7 +1,7 @@
 #!/bin/bash
 
-banner="/usr/local/bin/scripts/banner.txt"
-dir="/usr/local/bin/scripts/parts"
+banner="/home/developer/.scripts/banner.txt"
+dir="/home/developer/.scripts/parts"
 
 # QUIT
 quit() {

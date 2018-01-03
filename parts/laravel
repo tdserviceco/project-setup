@@ -1,5 +1,5 @@
 #!/bin/bash
-dir="/usr/local/bin/scripts/parts"
+dir="/home/developer/.scripts/parts"
 version="5.5"
 path="/var/www"
 site_available="/etc/apache2/sites-available"
