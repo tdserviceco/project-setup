@@ -2,7 +2,9 @@
 
 # Save the mysqldump as demo.sql
 
-if [ -z $2=="--mysqldump" ]; then
+mysqldump="--mysql" 
+
+if [ "$2" == "$mysqldump" ]; then
   echo ""
   echo ""
   read -p "Please type the name of the database you want to save: " choice
