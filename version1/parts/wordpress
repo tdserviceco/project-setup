@@ -25,7 +25,7 @@ else
     source $dir/createDB $name
     wp core download
     wp config create --dbname=$name --dbuser=root  --dbpass=root --dbhost=localhost
-    wp core install --skip-themes --skip-plugins --url=$name.serverbox.local --title=$name --admin_user=root --admin_password=root --admin_email=info@example.com
+    wp core install --skip-themes --skip-plugins --url=$name.serverbox.local --title=$name --admin_user=root --admin_password=root --admin_email=info@.com
     source $dir/apache-restart
     echo "Installation complete"
     sudo chmod 775 -R $path/$name

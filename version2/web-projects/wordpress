@@ -5,9 +5,46 @@
 #
 
 name=$1
-
-path="/var/www/$name"
-
-echo $path
-
+path="/var/www/$name/public"
+addsFolder=$path"/wp-content/themes/name-theme/adds"
+pluginFolder=$path"/wp-content/plugins"
+lib="/home/developer/.scripts/version2/lib"
+cd $path
+echo ""
+echo "WordPress it is!";
+echo "";
+echo "Creating $name"
+echo ""
+source $lib/vhost $path $name
+echo ""
+source $lib/createDB $name
+echo ""
+wp core download
+wp config create --dbname=$name --dbuser=root  --dbpass=root --dbhost=localhost
+wp core install --skip-themes --skip-plugins --url=$name.serverbox.local --title=$name --admin_user=root --admin_password=root --admin_email=info@$name.com
+source $lib/apache-restart
+echo "Download completed"
+echo ""
+echo ""
+sudo chmod 775 -R $path
+sudo chown developer:www-data -R $path
+cd $path/wp-content/themes
+sudo rm -rf *
+sudo mkdir name-theme
+sudo chown developer:www-data name-theme
+cd name-theme
+sudo git clone https://github.com/tdserviceco/wordpress-blank-theme.git .
+sudo rm -rf .git
+sudo chmod 775 -R *
+sudo chown developer:www-data -R *
+cd $addsFolder
+sudo unzip acf.zip
+sudo mv $addsFolder"/advanced-custom-fields-pro" $pluginFolder
+cd ..
+sudo rm -rf adds
+wp theme activate name-theme
+wp plugin activate advanced-custom-fields-pro
+wp cache flush
+echo "Latest wordpress with blank theme installed and ACF pro"
+echo "Dont forget to add *IP* http://"$name".serverbox.local in your host file! (Your host computer not serverbox)"
 exit 1

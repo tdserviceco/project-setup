@@ -1,0 +1,18 @@
+#!/bin/bash
+
+##
+# Purge your project!!
+#
+read -p "Type project name you wish to delete: " choice
+if [ $choice ]; then
+echo "Removing everything related to "$choice
+sudo -i rm -rf /var/www/$choice
+sudo -i rm /etc/apache2/sites-available/$choice".conf"
+sudo -i a2dissite $choice".conf"
+sudo -i systemctl reload apache2
+mysqladmin -uroot -proot drop $choice -f
+echo "Done"
+else 
+echo "Forgot to type a name!"
+exit 1
+fi
