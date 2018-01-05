@@ -1,0 +1,13 @@
+#!/bin/bash
+
+##
+# Wordpress 4.9.X
+#
+
+name=$1
+
+path="/var/www/$name"
+
+echo $path
+
+exit 1

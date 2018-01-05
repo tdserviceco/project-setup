@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# Save the mysqldump as demo.sql
+
+mysqldump="--mysql" 
+
+if [ "$2" == "$mysqldump" ]; then
+  echo ""
+  echo ""
+  read -p "Please type the name of the database you want to save: " choice
+  mysqlName=$choice
+  cd "/var/www/"$mysqlName"/private"
+  echo "Dumping $mysqlName"
+  mysqldump -u root -proot --databases $mysqlName > $mysqlName"-demo".sql
+fi
+
+# Add everything and send the message
+git add --all && git commit -m "$1" && git push 
+
