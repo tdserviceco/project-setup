@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# Save the mysqldump as demo.sql
+
+# Add everything and send the message
+git add --all && git commit -m "$1" && git push 
+

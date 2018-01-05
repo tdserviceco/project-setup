@@ -1,0 +1,37 @@
+#!/bin/bash
+
+dir="/home/developer/.scripts/parts"
+
+# QUIT
+quit() {
+  echo "Bye bye!"
+  exit 1
+}
+
+# Name of the project
+name=$1
+
+if [ -z "$name" ]; then
+  echo "You forgot to add a name to your project!"
+  exit 1
+fi
+
+echo ""
+echo "Project Setup 1.0.4"
+echo "1. WordPress"
+echo "2. Drupal 8"
+echo "3. Laravel 5.5"
+echo "4. HTML 5"
+echo "Q. Quit"
+
+while true; do
+  read -p "Please choose a project [1 - 4] " choice
+  case $choice in
+      [1]* ) source $dir/wordpress $name;;
+      [2]* ) source $dir/drupal $name;;
+      [3]* ) source $dir/laravel $name;;
+      [4]* ) source $dir/html5 $name;;
+      [q/Q]) quit;;
+      * ) echo "Please choose 1-4!";;
+  esac
+done

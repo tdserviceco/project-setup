@@ -1,0 +1,35 @@
+#!/bin/bash
+
+##
+# Create your web project!
+#
+
+
+# Continue with a empty project
+forward() {
+  echo ""
+  echo "Done! Created two folders (Private and Public) Happy Coding!"
+  echo ""
+  exit 1
+}
+
+name=$1
+type="/home/developer/.scripts/version2/web-projects"
+echo ""
+echo "1. Wordpress 4.9.x"
+echo "2. Drupal 8.x.x"
+echo "3. Laravel 5.x"
+echo "4. Empty project"
+echo ""
+while true; do
+  read -p "Please choose a project [1 - 4] " choice
+  case $choice in
+      [1]* ) source $type/wordpress $name;;
+      [2]* ) source $type/drupal $name;;
+      [3]* ) source $type/laravel $name;;      
+      [4]* ) forward;;
+      * ) echo "Please choose 1 - 4!";;
+  esac
+done
+
+exit 1
