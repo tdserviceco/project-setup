@@ -21,6 +21,6 @@ else
     source $dir/createDB $name
     source $dir/apache-restart
     echo "Installation complete"
-    echo "$path/$name/$public is now created!"
+    echo "http://$name.serverbox.local is now created!"
     echo "Don't forget to add *IP* http://"$name".serverbox.local in your host file! (Your host computer not serverbox)"
 fi

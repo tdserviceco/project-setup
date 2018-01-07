@@ -3,9 +3,8 @@
 ##
 # Heart and soul!
 #
-
-lib="/home/developer/.scripts/version2/lib"
 www_folder="/var/www"
+lib="/home/developer/.scripts/version2/lib"
 name=$1
 
 if [ -z "$name" ]; then
@@ -21,15 +20,6 @@ echo "#                             #"
 echo "###############################"
 echo ""
 
-# QUIT
-quit() {
-  echo ""
-  echo "Bye bye!"
-  cd $www_folder
-  sudo rm -R $name
-  exit 1
-}
-
 cd $www_folder
 
 if [ -d "$www_folder/$name" ] ; then 
@@ -43,5 +33,5 @@ cd $name
 mkdir public
 mkdir private
 sudo chown developer:www-data public private
-source $lib/project-create $name
+source $lib/create $name
 fi

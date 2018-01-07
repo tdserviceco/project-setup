@@ -1,8 +1,6 @@
 #!/bin/bash
 
-##
 # Wordpress 4.9.X
-#
 
 name=$1
 path="/var/www/$name/public"
@@ -45,6 +43,6 @@ sudo rm -rf adds
 wp theme activate name-theme
 wp plugin activate advanced-custom-fields-pro
 wp cache flush
-echo "Latest wordpress with blank theme installed and ACF pro"
-echo "Dont forget to add *IP* http://"$name".serverbox.local in your host file! (Your host computer not serverbox)"
+echo "http://$name.serverbox.local is now created!"
+echo "Dont forget to add *IP* "$name".serverbox.local in your host file! (Your host computer not serverbox)"
 exit 1

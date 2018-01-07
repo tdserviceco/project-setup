@@ -1,0 +1,17 @@
+#!/bin/bash
+
+name=$1
+path="/var/www/$name/public"
+lib="/home/developer/.scripts/version2/lib"
+www_folder="/var/www"
+
+cd $www_folder
+if [ -d "$www_folder/$name" ] ; then 
+    echo "$name exist already!"
+    exit 1
+else
+echo "" 
+source $lib/vhost $path $name
+echo ""
+source $lib/createDB $name
+fi

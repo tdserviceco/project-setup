@@ -1,0 +1,19 @@
+#!/bin/bash
+
+echo "Empty project it is!"
+echo ""
+echo "setting up database and vhost"
+
+name=$1
+path="/var/www/$name/public"
+lib="/home/developer/.scripts/version2/lib"
+
+echo ""
+source $lib/vhost $path $name
+echo ""
+source $lib/createDB $name
+
+echo "$path is now created!" 
+echo "Dont forget to add *IP* "$name".serverbox.local in your host file! (Your host computer not serverbox)"
+
+exit 1
