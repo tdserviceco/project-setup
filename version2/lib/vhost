@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# Creating a Vhost file
+site_available="/etc/apache2/sites-available" 
+
+echo "Creating Vhost"
+    sudo touch $site_available/$2".conf"
+    sudo chmod 777 $site_available/$2".conf"
+    sudo echo "<VirtualHost *:80>
+    ServerName $2.serverbox.local
+    DocumentRoot "$1"
+    <Directory "$1">
+        Options Indexes FollowSymLinks MultiViews
+        AllowOverride all
+                Order Deny,Allow
+                Allow from all
+    </Directory>
+    </VirtualHost>" >> $site_available/$2".conf"
+    sudo chmod 644 $site_available/$2".conf"
+    sudo a2ensite $2".conf"

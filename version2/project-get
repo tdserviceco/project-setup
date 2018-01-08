@@ -1,0 +1,60 @@
+#!/bin/bash
+
+##
+# Fetch your project via git!
+#
+lib="/home/developer/.scripts/version2/lib"
+
+# QUIT
+quit() {
+  echo ""
+  echo "Bye bye!"
+  exit 1
+}
+
+ssh() {
+  read -p "Enter git username: " name
+  read -p "What project you want to get?: " project  
+  if [ $name ] && [ $project ]; then
+    echo ""
+    source $lib/git-project $name
+    echo "Getting $project!"
+    git clone git@bitbucket.org:$name/$project.git
+    echo "$name is now cloned!" 
+    echo "Dont forget to add *IP* "$name".serverbox.local in your host file! (Your host computer not serverbox)"
+    exit 1
+  fi
+}
+
+https() {
+  read -p "Enter git username: " username
+  read -p "What project you want to get?: " project  
+  if [ $username ] && [ $project ]; then
+    echo ""
+    source $lib/git-project $project
+    echo "Getting $project!"
+    git clone https://github.com/$username/$project.git
+    echo "$project is now cloned!" 
+    echo "Dont forget to add *IP* "$project".serverbox.local in your host file! (Your host computer not serverbox)"
+    exit 1
+  fi
+}
+
+
+echo ""
+echo "Get project via:"
+echo ""
+echo "1. SSH"
+echo "2. HTTPS"
+echo "Q. Quit"
+while true; do
+  read -p "Please choose a type or exit " choice
+  case $choice in
+      [1]* ) ssh;;
+      [2]* ) https;;
+      [q/Q]* ) quit;;
+      * ) echo "Please choose 1 or 2 or exit!";;
+  esac
+done
+
+exit 1

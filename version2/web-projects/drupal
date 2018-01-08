@@ -1,5 +1,37 @@
-##
-# Drupal 8
-#
-
 #!/bin/bash
+
+# Drupal 8
+
+name=$1
+lib="/home/developer/.scripts/version2/lib"
+path="/var/www/$name/public"
+cd /var/www/$name/
+echo ""
+echo "Drupal it is!";
+echo "";
+echo "Creating $name"
+echo ""
+source $lib/vhost $path $name
+echo ""
+source $lib/createDB $name
+echo ""
+composer create-project drupal/drupal:8.4.2 public --stability dev --no-interaction 
+sudo chown -R developer:www-data $path 
+sudo chmod 777 $path/sites/default/
+sudo cp $path/sites/default/default.settings.php $path/sites/default/settings.php
+sudo chmod 777 $path/sites/default/settings.php
+sudo mkdir $path/sites/default/files/
+sudo mkdir $path/sites/default/files/translations 
+sudo chmod 777 -R $path/sites/default/files
+cd $path
+composer require drupal/paragraphs
+composer require drupal/pathauto
+drush si standard --db-url=mysql://root:root@127.0.0.1/$name
+source $lib/apache-restart
+drush en paragraphs
+drush en pathauto
+sudo chmod 775 $path
+echo "Installation complete"
+echo "$path is now created!" 
+echo "Dont forget to add *IP* "$name".serverbox.local in your host file! (Your host computer not serverbox)"
+exit 1
