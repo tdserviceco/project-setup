@@ -1,8 +1,7 @@
 #!/bin/bash
 
-##
 # Fetch your project via git!
-#
+
 lib="/home/developer/.scripts/version2/lib"
 
 # QUIT
