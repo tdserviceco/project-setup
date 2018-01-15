@@ -1,5 +1,8 @@
 # project-setup
 
+*Version 2.1
+Added a generate ssh key script
+
 *Version 2
 Cleaner code and now you can type project-create, delete or get (On going).
 Much much less code then version 1 

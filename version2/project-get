@@ -3,7 +3,7 @@
 # Fetch your project via git!
 
 lib="/home/developer/.scripts/version2/lib"
-
+ssh_path="/home/developer/.ssh"
 # QUIT
 quit() {
   echo ""
@@ -12,15 +12,15 @@ quit() {
 }
 
 ssh() {
-  read -p "Enter git username: " name
+  read -p "Enter git username: " username
   read -p "What project you want to get?: " project  
-  if [ $name ] && [ $project ]; then
+  if [ $username ] && [ $project ]; then
     echo ""
-    source $lib/git-project $name
+    source $lib/git-project $project
     echo "Getting $project!"
-    git clone git@bitbucket.org:$name/$project.git
-    echo "$name is now cloned!" 
-    echo "Dont forget to add *IP* "$name".serverbox.local in your host file! (Your host computer not serverbox)"
+    ssh-agent $(ssh-add ssh_path/id_rsa.pub; git clone git@github.com:$username/$project.git)
+    echo "$project is now cloned!" 
+    echo "Dont forget to add *IP* "$project".serverbox.local in your host file! (Your host computer not serverbox)"
     exit 1
   fi
 }
@@ -47,7 +47,7 @@ echo "1. SSH"
 echo "2. HTTPS"
 echo "Q. Quit"
 while true; do
-  read -p "Please choose a type or exit " choice
+  read -p "Please choose a type or exit: " choice
   case $choice in
       [1]* ) ssh;;
       [2]* ) https;;

@@ -23,14 +23,14 @@ echo "4. Empty project"
 echo "Q. Exit"
 echo ""
 while true; do
-  read -p "Please choose a project [1 - 4] or exit " choice
+  read -p "Please choose a project [1 - 4] or exit: " choice
   case $choice in
       [1]* ) source $type/wordpress $name;;
       [2]* ) source $type/drupal $name;;
       [3]* ) source $type/laravel $name;;      
       [4]* ) source $type/empty-project $name;;
       [q/Q]* ) quit;;
-      * ) echo "Please choose 1 - 4 or exit!";;
+      * ) echo "Please choose 1 - 4 or exit!:";;
   esac
 done
 

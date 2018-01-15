@@ -19,7 +19,7 @@ source $lib/createDB $name
 echo ""
 wp core download
 wp config create --dbname=$name --dbuser=root  --dbpass=root --dbhost=localhost
-wp core install --skip-themes --skip-plugins --url=$name.serverbox.local --title=$name --admin_user=root --admin_password=root --admin_email=info@$name.com
+wp core install --skip-themes --skip-plugins --url=$name.serverbox.local --title=$name --admin_user=root --admin_password=root --admin_email=info@example.com
 source $lib/apache-restart
 echo "Download completed"
 echo ""
