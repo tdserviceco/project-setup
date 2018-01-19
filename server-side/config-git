@@ -1,0 +1,10 @@
+#!/bin/bash
+
+if [ "$1" == "--name" ]; then
+  read -p "Please type your name: " username
+  git config --global user.name "$username"
+elif [ "$1" == "--email" ]; then 
+  read -p "Please type your email: " useremail
+  git config --global user.email "$useremail"
+fi
+exit 1;
