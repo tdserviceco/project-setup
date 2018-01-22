@@ -13,5 +13,6 @@ mysqladmin -uroot -proot drop $choice -f
 echo "Done"
 else 
 echo "Forgot to type a name!"
+trash-empty 
 exit 1
 fi

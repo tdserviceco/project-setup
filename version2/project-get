@@ -12,14 +12,16 @@ quit() {
 }
 
 ssh() {
+  read -p "Enter SSH key name: " keyname
   read -p "Enter git username: " username
   read -p "What project you want to get?: " project  
   if [ $username ] && [ $project ]; then
     echo ""
     source $lib/git-project $project
     echo "Getting $project!"
-    ssh-agent $(ssh-add ssh_path/id_rsa.pub; git clone git@github.com:$username/$project.git)
+    git clone git@github.com:$username/$project.git
     echo "$project is now cloned!" 
+    source $lib/apache-restart
     echo "Dont forget to add *IP* "$project".serverbox.local in your host file! (Your host computer not serverbox)"
     exit 1
   fi
@@ -33,6 +35,7 @@ https() {
     source $lib/git-project $project
     echo "Getting $project!"
     git clone https://github.com/$username/$project.git
+    source $lib/apache-restart
     echo "$project is now cloned!" 
     echo "Dont forget to add *IP* "$project".serverbox.local in your host file! (Your host computer not serverbox)"
     exit 1

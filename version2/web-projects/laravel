@@ -9,10 +9,11 @@ echo "Laravel 5.x it is"
 echo ""
 cd $path
 composer create-project --prefer-dist laravel/laravel .
-sudo chmod 777 $path/$name/storage
-source $lib/vhost $path $name
+sudo chmod 777 -R $path/storage
+source $lib/vhost $path $name --laravel
 source $lib/createDB $name
 source $lib/apache-restart
+sudo chown -R developer:www-data /var/www/$name
 echo "Installation complete"
 echo "http://$name.serverbox.local is now created!"
 echo "Don't forget to add *IP* "$name".serverbox.local in your host file! (Your host computer not serverbox)"

@@ -12,7 +12,7 @@ echo ""
 source $lib/vhost $path $name
 echo ""
 source $lib/createDB $name
-
+sudo chown -R developer:www-data /var/www/$name
 echo "$path is now created!" 
 echo "Dont forget to add *IP* "$name".serverbox.local in your host file! (Your host computer not serverbox)"
 

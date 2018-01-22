@@ -3,6 +3,21 @@
 # Creating a Vhost file
 site_available="/etc/apache2/sites-available" 
 
+if [ $3 == '--laravel' ]; then 
+echo "Creating Vhost"
+    sudo touch $site_available/$2".conf"
+    sudo chmod 777 $site_available/$2".conf"
+    sudo echo "<VirtualHost *:80>
+    ServerName $2.serverbox.local
+    DocumentRoot "$1/public"
+    <Directory "$1/public">
+        Options Indexes FollowSymLinks MultiViews
+        AllowOverride all
+                Order Deny,Allow
+                Allow from all
+    </Directory>
+    </VirtualHost>" >> $site_available/$2".conf"
+else
 echo "Creating Vhost"
     sudo touch $site_available/$2".conf"
     sudo chmod 777 $site_available/$2".conf"
@@ -16,5 +31,6 @@ echo "Creating Vhost"
                 Allow from all
     </Directory>
     </VirtualHost>" >> $site_available/$2".conf"
+fi
     sudo chmod 644 $site_available/$2".conf"
     sudo a2ensite $2".conf"

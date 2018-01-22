@@ -31,6 +31,7 @@ source $lib/apache-restart
 drush en paragraphs
 drush en pathauto
 sudo chmod 775 $path
+sudo chown -R developer:www-data /var/www/$name
 echo "Installation complete"
 echo "$path is now created!" 
 echo "Dont forget to add *IP* "$name".serverbox.local in your host file! (Your host computer not serverbox)"
